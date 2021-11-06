@@ -28,7 +28,7 @@ module.exports = {
         // the only required plugin option for WordPress is the GraphQL url.
         url:
           process.env.WPGRAPHQL_URL ||
-          `https://wpgatsbydemo.wpengine.com/graphql`,
+          `https://studiosc.theremotecreative.com/graphql`,
       },
     },
 
@@ -51,20 +51,23 @@ module.exports = {
      * See https://www.gatsbyjs.com/docs/gatsby-image/#setting-up-gatsby-image
      * if you're curious about it.
      */
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-
+    `gatsby-plugin-styled-components`,
+    'gatsby-plugin-page-transitions',
+    `gatsby-plugin-smoothscroll`,
     {
       // See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter WordPress Blog`,
-        short_name: `GatsbyJS & WP`,
+        name: `StudiosC`,
+        short_name: `StudiosC`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/logo-square.png`,
       },
     },
 
