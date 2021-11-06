@@ -3,18 +3,18 @@ import React from "react"
 import Layout from "../components/layout-v2"
 import Seo from "../components/seo"
 
-const StudioPage = () => {
+const PressPage = () => {
 
     return(
         <Layout>
             <Seo 
-            title={"Studio Page"} 
+            title={"Press Page"} 
             description={"Need Description"}
             />
-            <h1>Studio Page will go here</h1>
+            <h1>Press Page will go here</h1>
         </Layout>
     )
 
 }
 
-export default StudioPage
+export default PressPage
