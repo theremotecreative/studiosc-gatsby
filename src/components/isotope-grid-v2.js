@@ -5,36 +5,37 @@ import { GatsbyImage } from "gatsby-plugin-image"
 
 import Isotope from "isotope-layout/js/isotope";
 
-const IsoGrid = () => {
-
-    if (typeof window !== `undefined`) {
-
-      // import Isotope API
-      const Isotope = require("isotope-layout/js/isotope");
-      
-    }
+const IsoGridv2 = () => {
 
     // init one ref to store the future isotope object
     const isotope = React.useRef()
     // store the filter keyword in a state
     const [filterKey, setFilterKey] = React.useState('*')
 
-    // initialize an Isotope object with configs
-    React.useEffect(() => {
+    useEffect(() => {
+
+        if (typeof window !== `undefined`) {
+            // import Isotope API
+            const Isotope = require("isotope-layout/js/isotope");
+        }
+        // initialize an Isotope object with configs
         isotope.current = new Isotope('.filter-container', {
         itemSelector: '.filter-item',
         layoutMode: 'fitRows',
         })
         // cleanup
         return () => isotope.current.destroy()
-    }, [])
 
-    // handling filter key change
-    React.useEffect(() => {
+    }, []);
+
+    useEffect(() => {
+
+        // handling filter key change
         filterKey === '*'
         ? isotope.current.arrange({filter: `*`})
         : isotope.current.arrange({filter: `.${filterKey}`})
-    }, [filterKey])
+
+    }, [filterKey]);
 
     const handleFilterKeyChange = key => () => setFilterKey(key)
 
@@ -198,4 +199,4 @@ const GridMain = styled.section`
   }
 `
 
-export default IsoGrid
+export default IsoGridv2
