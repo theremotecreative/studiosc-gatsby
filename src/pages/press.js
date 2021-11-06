@@ -3,6 +3,8 @@ import React from "react"
 import Layout from "../components/layout-v2"
 import Seo from "../components/seo"
 
+import PressGrid from "../components/press-grid"
+
 const PressPage = () => {
 
     return(
@@ -11,7 +13,7 @@ const PressPage = () => {
             title={"Press Page"} 
             description={"Need Description"}
             />
-            <h1>Press Page will go here</h1>
+            <PressGrid />
         </Layout>
     )
 

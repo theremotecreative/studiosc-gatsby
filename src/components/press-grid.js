@@ -5,7 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 
 import Isotope from "isotope-layout/js/isotope";
 
-const IsoGrid = () => {
+const PressGrid = () => {
 
     if (typeof window !== `undefined`) {
 
@@ -40,11 +40,10 @@ const IsoGrid = () => {
 
     const data = useStaticQuery(graphql`
         query {
-          allWpProperty(sort: {fields: date, order: DESC}) {
+          allWpStudioPress(sort: {fields: date, order: DESC}) {
             edges {
               node {
                 title
-                slug
                 categories {
                   nodes {
                     slug
@@ -52,10 +51,11 @@ const IsoGrid = () => {
                 }
                 featuredImage {
                   node {
+                    title
                     localFile {
                       childImageSharp {
                         gatsbyImageData (
-                            width: 800
+                            width: 400
                             placeholder: BLURRED
                             formats: [AUTO, WEBP, AVIF]
                         )
@@ -63,8 +63,9 @@ const IsoGrid = () => {
                     }
                   }
                 }
-                propertyInfo {
-                  propertyLocation
+                pressInfo {
+                  pressDate
+                  pressLink
                 }
               }
             }
@@ -72,30 +73,29 @@ const IsoGrid = () => {
         }
     `)
 
-    const propertyMap = data.allWpProperty.edges
+    const pressMap = data.allWpStudioPress.edges
 
     return (
         <>
           <GridMain>
             <ul class="project-cats">
               <li onClick={handleFilterKeyChange('*')}>All</li>
-              <li onClick={handleFilterKeyChange('development')}>Development</li>
-              <li onClick={handleFilterKeyChange('residential')}>Residential</li>
-              <li onClick={handleFilterKeyChange('office')}>Office</li>
-              <li onClick={handleFilterKeyChange('adaptive-reuse')}>Adaptive Reuse</li>
+              <li onClick={handleFilterKeyChange('publication')}>Publications</li>
+              <li onClick={handleFilterKeyChange('award')}>Awards</li>
             </ul>
+            <h1>Press</h1>
             <ul className="filter-container">
 
-              {propertyMap.map(property => (
+              {pressMap.map(press => (
 
-                <div className={`filter-item ${property.node.categories.nodes.map(category => ( category.slug  )).join(' ')}`}>
-                  <GatsbyImage className={"slide-background"} image={property.node.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={"slide"} />
-                  <Link to={property.node.slug}>
+                <div className={`filter-item ${press.node.categories.nodes.map(category => ( category.slug  )).join(' ')}`}>
+                  <a href={press.node.pressInfo.pressLink}>
+                    <GatsbyImage className={"slide-background"} image={press.node.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={press.node.featuredImage.node.title} />
                     <div>
-                      <h3>{property.node.title}</h3>
-                      <p>{property.node.propertyInfo.propertyLocation}</p>
+                      <p>{press.node.pressInfo.pressDate}</p>
+                      <h3>{press.node.title}</h3>
                     </div>
-                  </Link>
+                  </a>
                 </div>
               ))}
             </ul>
@@ -106,7 +106,7 @@ const IsoGrid = () => {
 }
 
 const GridMain = styled.section`
-  max-width: 100%;
+  width: 100%;
   padding: 0 30px;
   ul.project-cats {
     list-style: none;
@@ -134,56 +134,55 @@ const GridMain = styled.section`
       }
     }
   }
+  h1 {
+      max-width: 1060px;
+      width: 100%;
+      margin: 0 auto;
+      font-family: Roboto;
+      font-weight: 400;
+      font-size: 24px;
+      text-transform: uppercase;
+  }
+  .filter-container {
+      max-width: 1140px;
+      width: 100%;
+      margin: 0 auto;
+  }
   .filter-item {
-    height: 400px;
-    width: 33%;
-    border: 10px solid #fff;
+    height: auto;
+    width: 25%;
+    border: 40px solid #fff;
     background-color: #fff;
     position: relative;
     .gatsby-image-wrapper {
-      position: relative;
-      height: 100%;
-      width: 100%;
-      z-index: 1;
-      opacity: 1;
-      transition-duration: .5s;
+        height: 240px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        img {
+            object-fit {
+                contain !important;
+            }
+        }
     }
     a {
-      position: absolute;
-      display: flex;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      justify-content: center;
-      align-items: center;
-      color: #000;
-      text-decoration: none;
-      z-index: 2;
-      opacity: 0;
-      transition-duration: .5s;
+        color: #242424;
+        text-decoration: none;
     }
     h3 {
-      font-family: Roboto;
-      text-align: center;
-      font-size: 30px;
-      letter-spacing: 1.5px;
-      font-weight: 400;
-      text-transform: uppercase;
+        font-family: Roboto;
+        font-size: 20px;
+        font-weight: 400;
+        margin-top: 0;
+        margin-bottom: 0;
     }
     p {
-      font-family: Roboto;
-      text-align: center;
-      font-size: 13px;
-      font-weight: 400;
-    }
-    &:hover {
-      .gatsby-image-wrapper {
-        opacity: 0;
-      }
-      a {
-        opacity: 1;
-      }
+        font-family: Roboto;
+        font-size: 16px;
+        text-transform: uppercase;
+        padding: 8px 0;
+        border-bottom: 1px solid #242424;
+        display: inline-block;
+        margin-bottom: 10px;
     }
   }
   @media(max-width:1200px) {
@@ -198,4 +197,4 @@ const GridMain = styled.section`
   }
 `
 
-export default IsoGrid
+export default PressGrid
