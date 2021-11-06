@@ -7,6 +7,13 @@ import Isotope from "isotope-layout/js/isotope";
 
 const IsoGrid = () => {
 
+    if (typeof window !== `undefined`) {
+
+      // import Isotope API
+      const Isotope = require("isotope-layout/js/isotope");
+      
+    }
+
     // init one ref to store the future isotope object
     const isotope = React.useRef()
     // store the filter keyword in a state
