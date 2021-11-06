@@ -3,7 +3,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import styled from 'styled-components'
 import { GatsbyImage } from "gatsby-plugin-image"
 
-//import Isotope from "isotope-layout/js/isotope";
+import Isotope from "isotope-layout/js/isotope";
 
 const IsoGridv2 = () => {
 
