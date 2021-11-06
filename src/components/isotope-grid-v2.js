@@ -1,16 +1,16 @@
-import React, { useState, useEffect }  from "react"
+import React, { useState, useEffect, useRef }  from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import styled from 'styled-components'
 import { GatsbyImage } from "gatsby-plugin-image"
 
-import Isotope from "isotope-layout/js/isotope";
+//import Isotope from "isotope-layout/js/isotope";
 
 const IsoGridv2 = () => {
 
     // init one ref to store the future isotope object
-    const isotope = React.useRef()
+    const isotope = useRef()
     // store the filter keyword in a state
-    const [filterKey, setFilterKey] = React.useState('*')
+    const [filterKey, setFilterKey] = useState('*')
 
     useEffect(() => {
 
@@ -20,8 +20,8 @@ const IsoGridv2 = () => {
         }
         // initialize an Isotope object with configs
         isotope.current = new Isotope('.filter-container', {
-        itemSelector: '.filter-item',
-        layoutMode: 'fitRows',
+            itemSelector: '.filter-item',
+            layoutMode: 'fitRows',
         })
         // cleanup
         return () => isotope.current.destroy()
