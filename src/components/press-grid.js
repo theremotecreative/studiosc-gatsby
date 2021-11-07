@@ -89,7 +89,7 @@ const PressGrid = () => {
               {pressMap.map(press => (
 
                 <div className={`filter-item ${press.node.categories.nodes.map(category => ( category.slug  )).join(' ')}`}>
-                  <a href={press.node.pressInfo.pressLink}>
+                  <a href={press.node.pressInfo.pressLink} target="_blank"  rel="noreferrer">
                     <GatsbyImage className={"slide-background"} image={press.node.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={press.node.featuredImage.node.title} />
                     <div>
                       <p>{press.node.pressInfo.pressDate}</p>
