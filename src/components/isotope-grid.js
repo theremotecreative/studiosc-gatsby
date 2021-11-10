@@ -192,8 +192,23 @@ const GridMain = styled.section`
     }
   }
   @media(max-width:767px) {
+    ul.project-cats {
+      flex-wrap: wrap;
+    }
     .filter-item {
       width: 100%;
+      height: 300px;
+      .gatsby-image-wrapper {
+        opacity: 1 !important;
+      }
+      a {
+        opacity: 1 !important;
+        color: #fff !important;
+        background-color: rgba(0,0,0,.5);
+      }
+      h3 {
+        color: #fff !important;
+      }
     }
   }
 `

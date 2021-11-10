@@ -125,6 +125,74 @@ const ProfileSection = styled.section`
             font-size: 20px;
         }
     }
+    @media(max-width:1200px) {
+        max-width: 900px;
+        div.slider-container {
+            max-width: 800px;
+            .slick-slider {
+                max-width: 700px;
+                .slick-slide {
+                    max-width: 700px;
+                    .gatsby-image-wrapper {
+                        img {
+                            height: 440px;
+                            width: 660px;
+                        }
+                    }
+                }
+            }
+            .slick-next {
+                right: -80px;
+            }
+        }
+        div.content {
+            p {
+                br {
+                    display: none;
+                }
+            }
+        }
+    }
+    @media(max-width:900px) {
+        max-width: 700px;
+        div.slider-container {
+            max-width: 600px;
+            .slick-slider {
+                max-width: 500px;
+                .slick-slide {
+                    max-width: 500px;
+                    .gatsby-image-wrapper {
+                        img {
+                            height: 320px;
+                            width: 460px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media(max-width:767px) {
+        max-width: 100%;
+        padding: 3rem;
+        div.slider-container {
+            .slick-slider {
+                max-width: 100%;
+                .slick-slide {
+                    max-width: 100%;
+                    .gatsby-image-wrapper {
+                        width: 100%;
+                        img {
+                            height: 250px;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            .slick-next {
+                right: 30px;
+            }
+        }
+    }
 `
 
 const TeamSection = styled.section`
@@ -151,6 +219,29 @@ const TeamSection = styled.section`
         }
         p {
             margin-bottom: 20px;
+        }
+    }
+    @media(max-width:1200px) {
+        max-width: 900px;
+        padding: 30px;
+        .team-member {
+            width: calc(33.33% - 30px);
+        }
+    }
+    @media(max-width:900px) {
+        max-width: 700px;
+        .team-member {
+            width: calc(50% - 30px);
+        }
+    }
+    @media(max-width:767px) {
+        max-width: 100%;
+        padding: 30px;
+    }
+    @media(max-width:580px) {
+        max-width: 350px;
+        .team-member {
+            width: 100%;
         }
     }
 `

@@ -78,6 +78,7 @@ const MainSection = styled.section`
             grid-template-columns: 1fr 1fr 1fr;
             grid-column-gap: 20px;
             grid-row-gap: 40px;
+            transition-duration: .3s;
             article {
                 a {
                     text-decoration: none;
@@ -96,7 +97,22 @@ const MainSection = styled.section`
             }
         }
     }
-    
+    @media(max-width:1200px) {
+        .main-row {
+            max-width: 800px;
+            .blog-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+    @media(max-width:767px) {
+        .main-row {
+            max-width: 400px;
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
 `
 
 export default HomeBlogSection

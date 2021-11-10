@@ -43,9 +43,9 @@ class HeroSlider extends Component {
 
 const SliderMain = styled.section`
     .slick-slider {
-        height: 100vh;
+        height: calc(100vh - 95px);
         .hero-slide {
-            height: 100vh;
+            height: calc(100vh - 95px);
             position: relative;
             display: flex !important;
             justify-content: center;
@@ -64,49 +64,6 @@ const SliderMain = styled.section`
                 &.top-center {
                     img {
                         object-position: top center;
-                    }
-                }
-            }
-            .slide-content {
-                text-align: center;
-                position: relative;
-                z-index: 3;
-                max-width: 800px;
-                h1,
-                h2 {
-                    font-family: Roboto;
-                    font-size: 60px;
-                    font-weight: 100;
-                    line-height: 1.5;
-                    color: #fff;
-                    text-shadow: 2px 2px 4px rgba(0,0,0,.8);
-                    transition-duration: .3s;
-                }
-                p {
-                    font-family: Roboto;
-                    font-size: 24px;
-                    line-height: 1.5;
-                    color: #fff;
-                    transition-duration: .3s;
-                }
-                a {
-                    font-family: Roboto;
-                    font-size: 24px;
-                    line-height: 1.5;
-                    color: #fff;
-                    text-decoration: none;
-                    font-family: Roboto;
-                    font-size: 24px;
-                    line-height: 1.5;
-                    color: #fff;
-                    background-color: #25afb4;
-                    padding: 10px 50px;
-                    border: 2px solid #fff;
-                    border-radius: 50px;
-                    transition-duration: .3s;
-                    &:hover {
-                        color: #25afb4;
-                        background-color: #fff;
                     }
                 }
             }
@@ -134,25 +91,19 @@ const SliderMain = styled.section`
             }
         }
     }
+    @media(max-width:1200px) {
+        .slick-slider {
+            height: calc(80vh - 95px);
+            .hero-slide {
+                height: calc(80vh - 95px);
+            }
+        }
+    }
     @media(max-width:767px) {
         .slick-slider {
+            height: calc(60vh - 95px);
             .hero-slide {
-                .slide-content {
-                    padding: 0 20px;
-                    h1,
-                    h2 {
-                        font-size: 32px;
-                        line-height: 1.3;
-                    }
-                    p {
-                        font-size: 18px;
-                        line-height: 1.3;
-                    }
-                    a {
-                        display: inline-block;
-                        font-size: 18px;
-                    }
-                }
+                height: calc(60vh - 95px);
             }
         }
     }
