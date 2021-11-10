@@ -56,7 +56,7 @@ const PressGrid = () => {
                       childImageSharp {
                         gatsbyImageData (
                             width: 400
-                            placeholder: BLURRED
+                            placeholder: TRACED_SVG
                             formats: [AUTO, WEBP, AVIF]
                         )
                       }
