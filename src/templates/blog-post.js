@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Image from "gatsby-image"
 import parse from "html-react-parser"
+import styled from 'styled-components'
 
 // We're using Gutenberg so we need the block styles
 // these are copied into this project due to a conflict in the postCSS
@@ -30,62 +31,47 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         itemScope
         itemType="http://schema.org/Article"
       >
-        <header>
-          <h1 itemProp="headline">{parse(post.title)}</h1>
+        <PostMain>
+          <header>
+            <h1 itemProp="headline">{parse(post.title)}</h1>
 
-          <p>{post.date}</p>
+            <p>{post.date}</p>
 
-          {/* if we have a featured image for this post let's display it */}
-          {featuredImage?.fluid && (
-            <Image
-              fluid={featuredImage.fluid}
-              alt={featuredImage.alt}
-              style={{ marginBottom: 50 }}
-            />
+            {/* if we have a featured image for this post let's display it */}
+            {featuredImage?.fluid && (
+              <Image
+                fluid={featuredImage.fluid}
+                alt={featuredImage.alt}
+                style={{ marginBottom: 50 }}
+              />
+            )}
+          </header>
+
+          {!!post.content && (
+            <section itemProp="articleBody">{parse(post.content)}</section>
           )}
-        </header>
-
-        {!!post.content && (
-          <section itemProp="articleBody">{parse(post.content)}</section>
-        )}
-
-        <hr />
-
-        <footer>
-          <Bio />
-        </footer>
+        </PostMain>
       </article>
 
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.uri} rel="prev">
-                ← {parse(previous.title)}
-              </Link>
-            )}
-          </li>
-
-          <li>
-            {next && (
-              <Link to={next.uri} rel="next">
-                {parse(next.title)} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
     </Layout>
   )
 }
+
+const PostMain = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  padding: 3rem;
+  margin: 0 auto;
+  h1 {
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.4;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+`
 
 export default BlogPostTemplate
 
