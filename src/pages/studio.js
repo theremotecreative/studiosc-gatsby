@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from 'gatsby'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import styled from 'styled-components'
 import Slider from "react-slick"
 
