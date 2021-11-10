@@ -1,17 +1,19 @@
 import React from "react"
+import { graphql } from 'gatsby'
 
 import Layout from "../components/layout-v2"
 import Seo from "../components/seo"
 
 import IsoGrid from "../components/isotope-grid"
 
-const ProjectPage = () => {
+const ProjectPage = ({ data: { queryContent } }) => {
 
     return(
         <Layout>
             <Seo 
-            title={"StudiosC Projects"} 
-            description={"Need Description"}
+            title={queryContent.seo.title} 
+            description={queryContent.seo.metaDesc}
+            metaImage={queryContent.seo.opengraphImage.localFile.childImageSharp.fluid}
             />
             <IsoGrid />
         </Layout>
@@ -20,3 +22,23 @@ const ProjectPage = () => {
 }
 
 export default ProjectPage
+
+export const pageQuery = graphql`
+    query {
+        queryContent: wpPage(databaseId: {eq: 218}) {
+            seo {
+                title
+                metaDesc
+                opengraphImage {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 1920) {
+                        ...GatsbyImageSharpFluid_withWebp
+                      }
+                    }
+                  }
+                }
+            }
+        }
+    }
+`

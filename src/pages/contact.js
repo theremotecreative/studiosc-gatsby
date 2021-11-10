@@ -1,20 +1,19 @@
 import React from "react"
+import { graphql } from 'gatsby'
 import styled from 'styled-components'
 
 import Layout from "../components/layout-v2"
 import StudioMap from "../components/google-map"
 import Seo from "../components/seo"
 
-const ContactPage = () => {
+const ContactPage = ({ data: { queryContent } }) => {
 
     return(
         <Layout>
-            {/* <Helmet>
-                <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCqtcHll5Dh-KwbI9_pZymyY8LjrnQxYq4&sensor=false&extension=.js'></script> 
-            </Helmet> */}
             <Seo 
-            title={"Contact Page"} 
-            description={"Need Description"}
+            title={queryContent.seo.title} 
+            description={queryContent.seo.metaDesc}
+            metaImage={queryContent.seo.opengraphImage.localFile.childImageSharp.fluid}
             />
             <StudioRow>
                 <StudioMap />
@@ -59,3 +58,23 @@ const StudioRow = styled.section`
 `
 
 export default ContactPage
+
+export const pageQuery = graphql`
+    query {
+        queryContent: wpPage(databaseId: {eq: 233}) {
+            seo {
+                title
+                metaDesc
+                opengraphImage {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 1920) {
+                        ...GatsbyImageSharpFluid_withWebp
+                      }
+                    }
+                  }
+                }
+            }
+        }
+    }
+`

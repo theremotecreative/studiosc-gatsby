@@ -1,17 +1,19 @@
 import React from "react"
+import { graphql } from 'gatsby'
 
 import Layout from "../components/layout-v2"
 import Seo from "../components/seo"
 
 import PressGrid from "../components/press-grid"
 
-const PressPage = () => {
+const PressPage = ({ data: { queryContent } }) => {
 
     return(
         <Layout>
             <Seo 
-            title={"Press Page"} 
-            description={"Need Description"}
+            title={queryContent.seo.title} 
+            description={queryContent.seo.metaDesc}
+            metaImage={queryContent.seo.opengraphImage.localFile.childImageSharp.fluid}
             />
             <PressGrid />
         </Layout>
@@ -20,3 +22,23 @@ const PressPage = () => {
 }
 
 export default PressPage
+
+export const pageQuery = graphql`
+    query {
+        queryContent: wpPage(databaseId: {eq: 230}) {
+            seo {
+                title
+                metaDesc
+                opengraphImage {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 1920) {
+                        ...GatsbyImageSharpFluid_withWebp
+                      }
+                    }
+                  }
+                }
+            }
+        }
+    }
+`

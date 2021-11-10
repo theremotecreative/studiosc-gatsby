@@ -16,7 +16,7 @@ const HomeTypologies = () => {
                             childImageSharp {
                                 gatsbyImageData (
                                     width: 430
-                                    placeholder: BLURRED
+                                    placeholder: TRACED_SVG
                                     formats: [AUTO, WEBP, AVIF]
                                 )
                             }
@@ -28,7 +28,7 @@ const HomeTypologies = () => {
                           childImageSharp {
                               gatsbyImageData (
                                   width: 430
-                                  placeholder: BLURRED
+                                  placeholder: TRACED_SVG
                                   formats: [AUTO, WEBP, AVIF]
                               )
                             }
@@ -40,7 +40,7 @@ const HomeTypologies = () => {
                           childImageSharp {
                               gatsbyImageData (
                                   width: 430
-                                  placeholder: BLURRED
+                                  placeholder: TRACED_SVG
                                   formats: [AUTO, WEBP, AVIF]
                               )
                             }
@@ -52,7 +52,7 @@ const HomeTypologies = () => {
                           childImageSharp {
                               gatsbyImageData (
                                   width: 995
-                                  placeholder: BLURRED
+                                  placeholder: TRACED_SVG
                                   formats: [AUTO, WEBP, AVIF]
                               )
                             }
@@ -63,7 +63,7 @@ const HomeTypologies = () => {
                           childImageSharp {
                               gatsbyImageData (
                                   width: 1000
-                                  placeholder: BLURRED
+                                  placeholder: TRACED_SVG
                                   formats: [AUTO, WEBP, AVIF]
                               )
                             }

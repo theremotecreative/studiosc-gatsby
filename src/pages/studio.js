@@ -25,8 +25,9 @@ const StudioPage = ({ data: { pageContent, sliderContent, teamContent } }) => {
     return(
         <Layout>
             <Seo 
-            title={"Studio Page"} 
-            description={"Need Description"}
+            title={pageContent.seo.title} 
+            description={pageContent.seo.metaDesc}
+            metaImage={pageContent.seo.opengraphImage.localFile.childImageSharp.fluid}
             />
             <ProfileSection>
                 <div class="slider-container">
@@ -160,6 +161,19 @@ export const pageQuery = graphql`
     query {
         pageContent: wpPage(databaseId: {eq: 227}) {
             content
+            seo {
+                title
+                metaDesc
+                opengraphImage {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 1920) {
+                        ...GatsbyImageSharpFluid_withWebp
+                      }
+                    }
+                  }
+                }
+            }
         }
         sliderContent: allWpStudioSlide(sort: {fields: date, order: ASC}) {
             edges {

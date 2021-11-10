@@ -7,6 +7,12 @@
  */
 
 module.exports = {
+  siteMetadata: {
+    title: `StudiosC`,
+    description: `Architecture Studio Based in Brooklyn, New York`,
+    author: `StudiosC`,
+    siteUrl: `https://studiosc.net`,
+  },
   /**
    * Adding plugins to this array adds them to your Gatsby site.
    *

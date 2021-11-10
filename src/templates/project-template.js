@@ -27,7 +27,11 @@ const ProjectTemplate = ({ data: { post } }) => {
 
     return (
         <Layout>
-          <Seo title={post.title} description={"need to complete seo element"} />
+          <Seo 
+            title={post.seo.title} 
+            description={post.seo.metaDesc}
+            metaImage={post.seo.opengraphImage.localFile.childImageSharp.fluid}
+            />
     
           <article
             className="blog-post"
@@ -215,6 +219,19 @@ export const pageQuery = graphql`
     post: wpProperty(id: { eq: $id }) {
       id
       title
+      seo {
+        title
+        metaDesc
+        opengraphImage {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1920) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
       propertyInfo {
         propertyDescription
         propertyClient
