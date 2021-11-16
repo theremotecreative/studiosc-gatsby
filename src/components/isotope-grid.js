@@ -192,6 +192,7 @@ const GridMain = styled.section`
     }
   }
   @media(max-width:767px) {
+    padding: 0 10px;
     ul.project-cats {
       flex-wrap: wrap;
     }

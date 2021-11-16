@@ -180,6 +180,7 @@ const HeaderMain = styled.header`
     }
     @media(max-width:767px) {
         .header-flex {
+            padding: 20px;
             .header-logo {
                 .gatsby-image-wrapper {
                     max-width: 140px;

@@ -173,7 +173,7 @@ const ProfileSection = styled.section`
     }
     @media(max-width:767px) {
         max-width: 100%;
-        padding: 3rem;
+        padding: 20px;
         div.slider-container {
             .slick-slider {
                 max-width: 100%;
@@ -236,7 +236,7 @@ const TeamSection = styled.section`
     }
     @media(max-width:767px) {
         max-width: 100%;
-        padding: 30px;
+        padding: 20px;
     }
     @media(max-width:580px) {
         max-width: 350px;

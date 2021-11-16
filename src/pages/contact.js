@@ -55,6 +55,9 @@ const StudioRow = styled.section`
             line-height: 20px;
         }
     }
+    @media(max-width:767px) {
+        padding: 20px;
+    }
 `
 
 export default ContactPage

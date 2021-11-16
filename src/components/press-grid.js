@@ -191,6 +191,7 @@ const GridMain = styled.section`
     }
   }
   @media(max-width:767px) {
+    padding: 10px;
     .filter-item {
       width: 100%;
     }
