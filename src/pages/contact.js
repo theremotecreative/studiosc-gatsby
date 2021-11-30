@@ -36,6 +36,7 @@ const ContactPage = ({ data: { queryContent } }) => {
 const StudioRow = styled.section`
     max-width: 1200px;
     width: 100%;
+    min-height: 100vh;
     padding: 3rem;
     margin: 0 auto;
     .contact-information {

@@ -89,13 +89,16 @@ const IsoGrid = () => {
               {propertyMap.map(property => (
 
                 <div className={`filter-item ${property.node.categories.nodes.map(category => ( category.slug  )).join(' ')}`}>
-                  <GatsbyImage className={"slide-background"} image={property.node.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={"slide"} />
-                  <Link to={property.node.slug}>
-                    <div>
-                      <h3>{property.node.title}</h3>
-                      <p>{property.node.propertyInfo.propertyLocation}</p>
-                    </div>
-                  </Link>
+                  <div class="property-container">
+                    <GatsbyImage className={"slide-background"} image={property.node.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={"slide"} />
+                    {/* <div class="property-background" style={{ backgroundImage: `url(${property.node.featuredImage.node.localFile.childImageSharp.gatsbyImageData})`, width: '100%'}} /> */}
+                    <Link to={property.node.slug}>
+                      <div>
+                        <h3>{property.node.title}</h3>
+                        <p>{property.node.propertyInfo.propertyLocation}</p>
+                      </div>
+                    </Link>
+                  </div>
                 </div>
               ))}
             </ul>
@@ -140,13 +143,34 @@ const GridMain = styled.section`
     border: 10px solid #fff;
     background-color: #fff;
     position: relative;
+    .property-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
     .gatsby-image-wrapper {
-      position: relative;
+      position: absolute !important;
       height: 100%;
       width: 100%;
+      max-height: 100% !important;
+      max-width: 100% !important;
       z-index: 1;
       opacity: 1;
       transition-duration: .5s;
+      > div {
+        height: 100%;
+        width: 100%;
+        max-height: 100% !important;
+        max-width: 100% !important;
+      }
+      img {
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        max-width: 100% !important;
+        object-fit: cover !important;
+        aspect-ratio: unset !important;
+      }
     }
     a {
       position: absolute;
