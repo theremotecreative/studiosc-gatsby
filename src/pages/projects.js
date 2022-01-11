@@ -15,7 +15,7 @@ const ProjectPage = ({ data: { queryContent } }) => {
             description={queryContent.seo.metaDesc}
             metaImage={queryContent.seo.opengraphImage.localFile.childImageSharp.fluid}
             />
-            {/* <IsoGrid /> */}
+            <IsoGrid />
         </Layout>
     )
 
