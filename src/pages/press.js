@@ -15,7 +15,7 @@ const PressPage = ({ data: { queryContent } }) => {
             description={queryContent.seo.metaDesc}
             metaImage={queryContent.seo.opengraphImage.localFile.childImageSharp.fluid}
             />
-            {/* <PressGrid /> */}
+            <PressGrid />
         </Layout>
     )
 
