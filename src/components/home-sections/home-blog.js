@@ -6,31 +6,41 @@ import { GatsbyImage } from "gatsby-plugin-image"
 const HomeBlogSection = () => {
 
     const data = useStaticQuery(graphql`
-        query {
-            queryContent: allWpPost(limit:6) {
+    query {
+        allWpStudioPress(limit: 4, sort: {fields: date, order: DESC}) {
+          edges {
+            node {
+              title
+              categories {
                 nodes {
-                    title
-                    uri
-                    featuredImage {
-                        node {
-                            title
-                            localFile {
-                                childImageSharp {
-                                    gatsbyImageData (
-                                        width: 600
-                                        placeholder: TRACED_SVG
-                                        formats: [AUTO, WEBP, AVIF]
-                                    )
-                                }
-                            }
-                        }
-                    }
+                  slug
                 }
+              }
+              featuredImage {
+                node {
+                  title
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData (
+                          width: 400
+                          placeholder: TRACED_SVG
+                          formats: [AUTO, WEBP, AVIF]
+                      )
+                    }
+                  }
+                }
+              }
+              pressInfo {
+                pressDate
+                pressLink
+              }
             }
+          }
         }
+      }
     `)
 
-    const blogMap = data.queryContent.nodes
+    const blogMap = data.allWpStudioPress.edges
 
     return(
 
@@ -44,10 +54,10 @@ const HomeBlogSection = () => {
                     itemScope
                     itemType="http://schema.org/Article"
                     >
-                        <Link to={`/blog${post.uri}`} itemProp="url">
-                            <GatsbyImage image={post.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={post.featuredImage.node.title} />
-                            <h3 dangerouslySetInnerHTML={{ __html: post.title}} itemProp="headline"/>
-                        </Link>
+                        <a href={post.node.pressInfo.pressLink} target="_blank"  rel="noreferrer">
+                            <GatsbyImage image={post.node.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={post.node.featuredImage.node.title} />
+                            <h3 dangerouslySetInnerHTML={{ __html: post.node.title}} itemProp="headline"/>
+                        </a>
                     </article>
                 ))}
                 </div>
@@ -75,8 +85,8 @@ const MainSection = styled.section`
         }
         .blog-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-column-gap: 20px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-column-gap: 40px;
             grid-row-gap: 40px;
             transition-duration: .3s;
             article {
@@ -92,7 +102,7 @@ const MainSection = styled.section`
                     margin-bottom: 30px;
                 }
                 .gatsby-image-wrapper {
-                    height: 300px;
+                    height: auto;
                 }
             }
         }

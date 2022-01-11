@@ -155,7 +155,7 @@ const GridMain = styled.section`
     background-color: #fff;
     position: relative;
     .gatsby-image-wrapper {
-        height: 240px;
+        height: auto;
         margin: 0 auto;
         margin-bottom: 20px;
         img {

@@ -113,7 +113,7 @@ export default props => (
     <StaticQuery
       query={graphql`
         query {
-            allWpHomeSlide {
+            allWpHomeSlide(sort: {fields: date, order: DESC}) {
                 edges {
                     node {
                         featuredImage {
