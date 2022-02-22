@@ -30,7 +30,7 @@ const StudioPage = ({ data: { pageContent, sliderContent, teamContent } }) => {
             metaImage={pageContent.seo.opengraphImage.localFile.childImageSharp.fluid}
             />
             <ProfileSection>
-                <div class="slider-container">
+                {/* <div class="slider-container">
                     <Slider {...settings}>
                         {sliderMap.map(imageSrc => (
                             <div class="studio-slide">
@@ -38,6 +38,9 @@ const StudioPage = ({ data: { pageContent, sliderContent, teamContent } }) => {
                             </div>
                         ))}
                     </Slider>
+                </div> */}
+                <div class="studio-image">
+                    <GatsbyImage image={pageContent.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={pageContent.featuredImage.node.title} />
                 </div>
                 <div class="content" dangerouslySetInnerHTML={{ __html: pageContent.content }} />
             </ProfileSection>
@@ -252,6 +255,20 @@ export const pageQuery = graphql`
     query {
         pageContent: wpPage(databaseId: {eq: 227}) {
             content
+            featuredImage {
+                node {
+                  title
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData (
+                          width: 1400
+                          placeholder: TRACED_SVG
+                          formats: [AUTO, WEBP, AVIF]
+                      )
+                    }
+                  }
+                }
+              }
             seo {
                 title
                 metaDesc

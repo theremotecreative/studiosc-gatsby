@@ -147,9 +147,10 @@ const GridMain = styled.section`
       max-width: 1140px;
       width: 100%;
       margin: 0 auto;
+      margin-bottom: 50px;
   }
   .filter-item {
-    height: auto;
+    height: 440px;
     width: 25%;
     border: 40px solid #fff;
     background-color: #fff;
@@ -186,12 +187,25 @@ const GridMain = styled.section`
     }
   }
   @media(max-width:1200px) {
+    .filter-container {
+      max-width: 855px;
+    }
+    .filter-item {
+      width: 33.33%;
+    }
+  }
+  @media(max-width:850px) {
+    .filter-container {
+      max-width: 570px;
+    }
     .filter-item {
       width: 50%;
     }
   }
-  @media(max-width:767px) {
-    padding: 10px;
+  @media(max-width:640px) {
+    .filter-container {
+      max-width: 285px;
+    }
     .filter-item {
       width: 100%;
     }

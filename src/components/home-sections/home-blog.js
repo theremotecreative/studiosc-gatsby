@@ -7,22 +7,17 @@ const HomeBlogSection = () => {
 
     const data = useStaticQuery(graphql`
     query {
-        allWpStudioPress(limit: 4, sort: {fields: date, order: DESC}) {
+        allWpHomeUpdate(limit: 6, sort: {fields: date, order: DESC}) {
           edges {
             node {
               title
-              categories {
-                nodes {
-                  slug
-                }
-              }
               featuredImage {
                 node {
                   title
                   localFile {
                     childImageSharp {
                       gatsbyImageData (
-                          width: 400
+                          width: 800
                           placeholder: TRACED_SVG
                           formats: [AUTO, WEBP, AVIF]
                       )
@@ -30,9 +25,9 @@ const HomeBlogSection = () => {
                   }
                 }
               }
-              pressInfo {
-                pressDate
-                pressLink
+              homeUpdateContent {
+                linkNewTab
+                homeUpdateLink
               }
             }
           }
@@ -40,7 +35,7 @@ const HomeBlogSection = () => {
       }
     `)
 
-    const blogMap = data.allWpStudioPress.edges
+    const blogMap = data.allWpHomeUpdate.edges
 
     return(
 
@@ -54,10 +49,17 @@ const HomeBlogSection = () => {
                     itemScope
                     itemType="http://schema.org/Article"
                     >
-                        <a href={post.node.pressInfo.pressLink} target="_blank"  rel="noreferrer">
-                            <GatsbyImage image={post.node.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={post.node.featuredImage.node.title} />
-                            <h3 dangerouslySetInnerHTML={{ __html: post.node.title}} itemProp="headline"/>
-                        </a>
+                        {post.node.homeUpdateContent.linkNewTab ? (
+                            <a href={post.node.homeUpdateContent.homeUpdateLink} target="_blank"  rel="noreferrer">
+                                <GatsbyImage image={post.node.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={post.node.featuredImage.node.title} />
+                                <h3 dangerouslySetInnerHTML={{ __html: post.node.title}} itemProp="headline"/>
+                            </a>
+                        ) : (
+                            <Link to={post.node.homeUpdateContent.homeUpdateLink}>
+                                <GatsbyImage image={post.node.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={post.node.featuredImage.node.title} />
+                                <h3 dangerouslySetInnerHTML={{ __html: post.node.title}} itemProp="headline"/>
+                            </Link>
+                        )}
                     </article>
                 ))}
                 </div>
@@ -85,7 +87,7 @@ const MainSection = styled.section`
         }
         .blog-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             grid-column-gap: 40px;
             grid-row-gap: 40px;
             transition-duration: .3s;
