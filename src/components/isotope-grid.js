@@ -82,8 +82,8 @@ const IsoGrid = () => {
               <li onClick={handleFilterKeyChange('development')}>Development</li>
               <li onClick={handleFilterKeyChange('residential')}>Residential</li>
               <li onClick={handleFilterKeyChange('office')}>Office</li>
-              <li onClick={handleFilterKeyChange('adaptive-reuse')}>Adaptive Reuse</li>
               <li onClick={handleFilterKeyChange('commercial')}>Commercial</li>
+              <li onClick={handleFilterKeyChange('adaptive-reuse')}>Adaptive Reuse</li>
             </ul>
             <ul className="filter-container">
 
