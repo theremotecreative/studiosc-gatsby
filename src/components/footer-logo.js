@@ -19,7 +19,7 @@ const FooterLogo = () => {
 
   const mainLogo = getImage(data.placeholderImage.childImageSharp.gatsbyImageData)
 
-  return <GatsbyImage image={mainLogo} alt="StudiosC Footer Logo" style={{margin: '0 auto'}}/>
+  return <GatsbyImage className={"footer-logo"} image={mainLogo} alt="StudiosC Footer Logo" style={{margin: '0 auto'}}/>
 }
 
 export default FooterLogo

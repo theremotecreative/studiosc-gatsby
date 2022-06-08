@@ -100,7 +100,7 @@ const MainNav = styled.nav`
             }
         }
     }
-    @media(max-width: 1100px) {
+    @media(max-width: 767px) {
         display: none;
         opacity: 0;
         visibility: hidden;

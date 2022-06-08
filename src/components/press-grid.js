@@ -202,6 +202,15 @@ const GridMain = styled.section`
       width: 50%;
     }
   }
+  @media(max-width:767px) {
+    ul.project-cats {
+      justify-content: center;
+      margin-top: 30px;
+    }
+    h1 {
+      display: none;
+    }
+  }
   @media(max-width:640px) {
     .filter-container {
       max-width: 285px;

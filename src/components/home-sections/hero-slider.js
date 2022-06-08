@@ -10,6 +10,7 @@ class HeroSlider extends Component {
 
         const { data } = this.props; 
         const slideMap = data.allWpHomeSlide.edges
+        const mobileImageSrc = data.wpHomeSection.featuredImage
 
         const settings = {
             arrows: false,
@@ -33,6 +34,10 @@ class HeroSlider extends Component {
                         </div>
                     ))}
                 </Slider>
+
+                <MobileBanner>
+                    <GatsbyImage className={"mobile-image"} image={mobileImageSrc.node.localFile.childImageSharp.gatsbyImageData} alt={"StudioSC mobile banner image"} />
+                </MobileBanner>
 
             </SliderMain>
         )
@@ -101,11 +106,19 @@ const SliderMain = styled.section`
     }
     @media(max-width:767px) {
         .slick-slider {
+            display: none;
             height: calc(60vh - 95px);
             .hero-slide {
                 height: calc(60vh - 95px);
             }
         }
+    }
+`
+
+const MobileBanner = styled.div`
+    display: none;
+    @media(max-width:767px) {
+        display: block;
     }
 `
 
@@ -127,6 +140,21 @@ export default props => (
                                         )
                                     }
                                 }
+                            }
+                        }
+                    }
+                }
+            }
+            wpHomeSection(databaseId: {eq: 1318}) {
+                featuredImage {
+                    node {
+                        localFile {
+                            childImageSharp {
+                                gatsbyImageData (
+                                    width: 800
+                                    placeholder: TRACED_SVG
+                                    formats: [AUTO, WEBP, AVIF]
+                                )
                             }
                         }
                     }

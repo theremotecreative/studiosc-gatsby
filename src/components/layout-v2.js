@@ -11,6 +11,7 @@ import "../css/slick.css"
 import "../css/slick-theme.css"
 
 import HeaderLogo from "../components/header-logo"
+import HomeMobileLogo from "../components/mobile-logo"
 import HeaderMenu from "../components/header-menu"
 import MobileMenu from "../components/mobile-menu"
 import Footer from "../components/footer"
@@ -30,18 +31,20 @@ class Layout extends Component {
 
     render() {
         const children = this.props.children
+        const isHomePage = this.props.isHomePage
         let headerName = "headerStatus";
         if (this.state.isOpen) {
           headerName += ' mobileOpen';
         }
         return (
-            <Main>
+            <Main className={isHomePage ? "is-homepage" : "is-not-homepage"}>
 
                 <HeaderMain className={headerName}>
 
                     <div class="header-flex">
                         <Link to={'/'} className={"header-logo"}>
                             <HeaderLogo/>
+                            <HomeMobileLogo/>
                         </Link>
 
                         <HeaderMenu/>
@@ -82,6 +85,29 @@ const Main = styled.div`
     position: relative;
     overflow: hidden;
     background-color: #fff;
+    .home-mobile-logo {
+        display: none;
+    }
+    @media(max-width:767px) {
+        &.is-homepage {
+            .main-logo {
+                display: none !important;
+            }
+            .home-mobile-logo {
+                display: block;
+            }
+            .mobile-menu {
+                background-color: transparent;
+                box-shadow: none;
+            }
+        }
+        &.is-not-homepage {
+            padding-top: 95px;
+            .header-flex {
+                background-color: #fff;
+            }
+        }
+    }
 `
 
 const HeaderMain = styled.header`
@@ -132,7 +158,11 @@ const HeaderMain = styled.header`
         }
     }
     .mobile-menu {
-        position: relative;
+        position: fixed;
+        top: 95px;
+        z-index: 10;
+        background-color: #fff;
+        box-shadow: 0px 6px 4px rgba(0,0,0,.1);
         width: 100%;
         padding: 0px;
         opacity: 0;
@@ -166,7 +196,7 @@ const HeaderMain = styled.header`
             max-height: 800px;
         }
     }
-    @media(max-width:1100px) {
+    @media(max-width:767px) {
         .mobile-menu-icon {
             display: block;
             opacity: 1;
@@ -177,10 +207,13 @@ const HeaderMain = styled.header`
             opacity: 1;
             visibility: visible;
         }
-    }
-    @media(max-width:767px) {
         .header-flex {
+            position: fixed;
+            z-index: 1;
+            width: 100%;
             padding: 20px;
+            top: 0;
+            left: 0;
             .header-logo {
                 .gatsby-image-wrapper {
                     max-width: 140px;

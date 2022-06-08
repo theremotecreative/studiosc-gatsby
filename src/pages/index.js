@@ -11,7 +11,7 @@ import HomeBlog from "../components/home-sections/home-blog"
 const IndexPage = ({ data: { queryContent } }) => {
 
     return(
-        <Layout>
+        <Layout isHomePage>
             <Seo 
             title={queryContent.seo.title} 
             description={queryContent.seo.metaDesc}

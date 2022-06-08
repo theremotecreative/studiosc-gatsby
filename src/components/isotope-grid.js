@@ -220,6 +220,8 @@ const GridMain = styled.section`
     padding: 0 10px;
     ul.project-cats {
       flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
     }
     .filter-item {
       width: 100%;
