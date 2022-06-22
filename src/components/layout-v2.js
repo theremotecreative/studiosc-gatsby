@@ -86,7 +86,27 @@ const Main = styled.div`
     overflow: hidden;
     background-color: #fff;
     .home-mobile-logo {
-        display: none;
+        display: none !important;
+    }
+    &.is-homepage {
+        .mobile-menu-icon {
+            button {
+                > div {
+                    background-color: #fff;
+                }
+            }
+        }
+        .mobile-menu {
+            ul > li {
+                font-size: 24px;
+                font-weight: 400;
+                text-transform: uppercase;
+                text-shadow: 0 0 2px rgb(0 0 0 / 50%);
+                > a {
+                    color: #fff;
+                }
+            }
+        }
     }
     @media(max-width:767px) {
         &.is-homepage {
@@ -94,7 +114,7 @@ const Main = styled.div`
                 display: none !important;
             }
             .home-mobile-logo {
-                display: block;
+                display: block !important;
             }
             .mobile-menu {
                 background-color: transparent;
@@ -209,7 +229,7 @@ const HeaderMain = styled.header`
         }
         .header-flex {
             position: fixed;
-            z-index: 1;
+            z-index: 100;
             width: 100%;
             padding: 20px;
             top: 0;
